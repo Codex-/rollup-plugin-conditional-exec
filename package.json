@@ -1,0 +1,11 @@
+{
+  "name": "rollup-plugin-conditional-exec",
+  "version": "1.0.0",
+  "description": "Execute a given command after a bundle has been written",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Miller <codex.nz@gmail.com>",
+  "license": "ISC"
+}

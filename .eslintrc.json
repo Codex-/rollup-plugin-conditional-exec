@@ -1,0 +1,48 @@
+{
+  "plugins": ["import", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "airbnb-typescript/base",
+    "prettier"
+  ],
+  "ignorePatterns": ["__fixtures__", "dist", "output", "jest.config.ts"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "@typescript-eslint/await-thenable": "warn",
+    "@typescript-eslint/no-floating-promises": [
+      "warn",
+      { "ignoreIIFE": true, "ignoreVoid": false }
+    ],
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "import/order": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
+    "import/prefer-default-export": "off",
+    "no-console": ["warn"],
+    "no-plusplus": "off",
+    "prettier/prettier": "warn",
+    "radix": ["error", "as-needed"]
+  },
+  "overrides": [
+    {
+      "files": ["*.spec.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unused-expressions": "off"
+      }
+    }
+  ]
+}

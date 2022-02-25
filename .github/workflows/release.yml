@@ -1,0 +1,57 @@
+name: release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: choice
+        description: Version number to increment
+        required: true
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  release:
+    env:
+      CI: true
+      GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
+      NPM_OTP_TOKEN: ${{ github.event.inputs.otp }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Need history for changelog generation
+      - name: Use Node.js lts
+        uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - name: build
+        run: npm run build
+      - name: test
+        id: test
+        if: ${{ always() }}
+        run: npm run test -- --coverage
+      - name: lint
+        if: ${{ always() }}
+        run: npm run lint
+      - name: style
+        if: ${{ always() }}
+        run: npm run format:check
+      - name: npm auth
+        run: npm set "//registry.npmjs.org/:_authToken" ${{ env.NPM_TOKEN }}
+      - name: config git user
+        run: |
+          git config --global user.name ${{ secrets.ACTION_GITHUB_USERNAME }};
+          git config --global user.email ${{ secrets.ACTION_GITHUB_EMAIL }};
+      - name: perform release
+        run: |
+          npm run release -- \
+            ${{ github.event.inputs.version }} \
+            --ci
+      - name: codecov # Perform after version publishing
+        if: steps.test.outcome == 'success'
+        uses: codecov/codecov-action@v2

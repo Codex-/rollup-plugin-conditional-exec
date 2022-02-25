@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-conditional-exec",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Execute a given command after a bundle has been written",
   "author": "Alex Miller <codex.nz@gmail.com>",
   "license": "MIT",

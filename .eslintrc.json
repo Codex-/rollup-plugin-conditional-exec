@@ -6,7 +6,13 @@
     "airbnb-typescript/base",
     "prettier"
   ],
-  "ignorePatterns": ["__fixtures__", "dist", "output", "jest.config.ts"],
+  "ignorePatterns": [
+    "__fixtures__",
+    "coverage",
+    "dist",
+    "output",
+    "jest.config.ts"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },

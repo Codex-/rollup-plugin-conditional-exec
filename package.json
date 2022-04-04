@@ -1,8 +1,16 @@
 {
   "name": "rollup-plugin-conditional-exec",
   "version": "1.0.0",
-  "description": "Execute a given command after a bundle has been written",
   "author": "Alex Miller <codex.nz@gmail.com>",
+  "description": "Execute a given command after a bundle has been written",
+  "homepage": "https://github.com/Codex-/rollup-plugin-conditional-exec#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Codex-/rollup-plugin-conditional-exec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Codex-/rollup-plugin-conditional-exec/issues"
+  },
   "license": "MIT",
   "keywords": [
     "rollup",
@@ -20,6 +28,9 @@
     "release": "release-it",
     "test": "jest"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "peerDependencies": {
     "rollup": "^2.0.0"
   },

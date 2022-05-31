@@ -3,6 +3,7 @@
   "version": "1.0.2",
   "author": "Alex Miller <codex.nz@gmail.com>",
   "description": "Execute a given command after a bundle has been written",
+  "type": "module",
   "homepage": "https://github.com/Codex-/rollup-plugin-conditional-exec#readme",
   "repository": {
     "type": "git",
@@ -18,10 +19,22 @@
     "conditional-exec",
     "exec"
   ],
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dis/cjs/index.cjs"
+      }
+    }
+  },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.cjs.json & tsc -p tsconfig.esm.json",
     "format:check": "prettier --check \"{**/*,*}.{js,ts}\"",
     "format:write": "npm run format:check -- --write",
     "lint": "eslint --ext \".js,.ts\" .",

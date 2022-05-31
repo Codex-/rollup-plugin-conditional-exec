@@ -1,5 +1,5 @@
 {
   "extends": "./tsconfig.json",
-  "compilerOptions": { "sourceMap": false },
+  "compilerOptions": { "noEmit": false, "sourceMap": false },
   "exclude": ["**/__fixtures__/**/*", "**/*.spec.*"]
 }

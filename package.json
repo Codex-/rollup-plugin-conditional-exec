@@ -3,6 +3,7 @@
   "version": "2.0.3",
   "author": "Alex Miller <codex.nz@gmail.com>",
   "description": "Execute a given command after a bundle has been written",
+  "type": "module",
   "homepage": "https://github.com/Codex-/rollup-plugin-conditional-exec#readme",
   "repository": {
     "type": "git",

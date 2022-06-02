@@ -29,7 +29,7 @@
       },
       "require": {
         "types": "./dist/cjs/index.d.cts",
-        "default": "./dis/cjs/index.js"
+        "default": "./dist/cjs/index.js"
       }
     }
   },

@@ -11,6 +11,7 @@
     "coverage",
     "dist",
     "output",
+    "esbuild.config.mjs",
     "jest.config.ts"
   ],
   "parserOptions": {

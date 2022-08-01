@@ -1,5 +1,0 @@
-{
-  "extends": "./tsconfig.build.json",
-  "compilerOptions": { "module": "commonjs", "outDir": "dist/cjs" },
-  "exclude": ["**/__fixtures__/**/*", "**/*.spec.*"]
-}

@@ -1,29 +1,43 @@
-import { join } from "path";
-import cp, { ChildProcess, CommonExecOptions } from "child_process";
+import cp, { ChildProcess, CommonExecOptions } from "node:child_process";
+import { join } from "node:path";
+import {
+  afterAll,
+  afterEach,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  SpyInstance,
+  vi,
+} from "vitest";
 import { OutputOptions, rollup } from "rollup";
 import conditionalExec from "./";
+
+vi.mock("node:child_process");
 
 const cwd = join(__dirname, "__fixtures__/");
 const outputDir = join(__dirname, "../output");
 
 describe("rollup-plugin-conditional-exec", () => {
-  let mockExec: jest.SpyInstance;
+  let mockExec: SpyInstance;
 
   function sleep(ms: number): Promise<void> {
     return new Promise<void>((resolve) => setTimeout(resolve, ms));
   }
 
   beforeEach(() => {
-    jest.spyOn(cp, "ChildProcess").mockImplementation();
-
-    mockExec = jest.spyOn(cp, "exec").mockImplementation((cmd, opts, cb) => {
+    mockExec = vi.spyOn(cp, "exec").mockImplementation((_cmd, _opts, cb) => {
       cb && cb(null, "", "");
       return new ChildProcess();
     });
   });
 
   afterEach(() => {
-    jest.resetAllMocks();
+    vi.resetAllMocks();
+  });
+
+  afterAll(() => {
+    vi.restoreAllMocks();
   });
 
   describe("command", () => {
@@ -214,7 +228,7 @@ describe("rollup-plugin-conditional-exec", () => {
 
   describe("afterExec", () => {
     it("should run a given function after a successful execution", async () => {
-      const afterExec = jest.fn();
+      const afterExec = vi.fn();
       const bundle = await rollup({
         input: join(cwd, "index.js"),
         preserveEntrySignatures: "strict",
@@ -267,15 +281,15 @@ describe("rollup-plugin-conditional-exec", () => {
     beforeEach(() => {
       mockExec.mockRestore();
 
-      mockExec = jest.spyOn(cp, "exec").mockImplementation((cmd, opts, cb) => {
+      mockExec = vi.spyOn(cp, "exec").mockImplementation((_cmd, _opts, cb) => {
         cb && cb(new Error("Test Error"), "", "");
         return new ChildProcess();
       });
     });
 
     it("should log and throw the error if no onError function has been provided", async () => {
-      const consoleErrorSpy = jest.spyOn(console, "error");
-      const consoleDebugSpy = jest.spyOn(console, "debug");
+      const consoleErrorSpy = vi.spyOn(console, "error");
+      const consoleDebugSpy = vi.spyOn(console, "debug");
 
       const bundle = await rollup({
         input: join(cwd, "index.js"),
@@ -296,7 +310,7 @@ describe("rollup-plugin-conditional-exec", () => {
     });
 
     it("should call a given onError function should an error occur", async () => {
-      const onError = jest.fn();
+      const onError = vi.fn();
       const bundle = await rollup({
         input: join(cwd, "index.js"),
         preserveEntrySignatures: "strict",

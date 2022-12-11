@@ -12,7 +12,7 @@
     "dist",
     "output",
     "esbuild.config.mjs",
-    "jest.config.ts"
+    "vite.config.ts"
   ],
   "parserOptions": {
     "project": "./tsconfig.json"

@@ -1,4 +1,4 @@
-import { exec, CommonExecOptions } from "child_process";
+import { default as cp, CommonExecOptions } from "node:child_process";
 import { OutputOptions, Plugin } from "rollup";
 
 export interface RollupConditionalExecOptions {
@@ -65,7 +65,7 @@ export default function conditionalExec(
     writeBundle: async (outputOptions) => {
       if (await condition(outputOptions)) {
         const cmdPromise = new Promise<void>((resolve, reject) => {
-          exec(cmd, options, (error) => {
+          cp.exec(cmd, options, (error) => {
             if (error) {
               return reject(error);
             }

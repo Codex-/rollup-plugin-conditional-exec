@@ -43,7 +43,8 @@
     "format:write": "npm run format:check -- --write",
     "lint": "eslint --ext \".js,.ts\" .",
     "release": "release-it",
-    "test": "vitest run --coverage"
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
   },
   "files": [
     "dist/**/*"

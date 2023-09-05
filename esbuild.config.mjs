@@ -4,8 +4,6 @@ import { readFile } from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const nodeTarget = "node16";
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const packageJsonPath = path.resolve(__dirname, "package.json");
 
@@ -24,7 +22,7 @@ async function bundle(externalDeps, format, outDir) {
     format: format,
     external: externalDeps,
     platform: "node",
-    target: nodeTarget,
+    target: "node18",
     treeShaking: true,
   });
 }
@@ -34,8 +32,8 @@ async function bundle(externalDeps, format, outDir) {
     const startTime = Date.now();
     console.info(
       chalk.bold(
-        `🚀 ${chalk.blueBright("rollup-plugin-conditional-exec")} Build\n`
-      )
+        `🚀 ${chalk.blueBright("rollup-plugin-conditional-exec")} Build\n`,
+      ),
     );
 
     const externalDeps = await getExternals();
@@ -51,14 +49,14 @@ async function bundle(externalDeps, format, outDir) {
       console.info(`📝 Bundle Analysis:${analysis}`);
 
       console.info(
-        chalk.bold(chalk.greenBright(`✔ Bundling ${format} completed!\n`))
+        chalk.bold(chalk.greenBright(`✔ Bundling ${format} completed!\n`)),
       );
     }
 
     console.info(
       `${chalk.bold.green("✔ Bundled package successfully!")} (${
         Date.now() - startTime
-      }ms)`
+      }ms)`,
     );
   } catch (error) {
     console.error(`🧨 ${chalk.red.bold("Failed:")} ${error.message}`);

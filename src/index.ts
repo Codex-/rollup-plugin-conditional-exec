@@ -32,7 +32,7 @@ export interface RollupConditionalExecOptions {
 }
 
 export default function conditionalExec(
-  opts: RollupConditionalExecOptions
+  opts: RollupConditionalExecOptions,
 ): Plugin {
   const cmd: string = opts.command;
   const options: CommonExecOptions = opts.options || { stdio: "inherit" };
@@ -57,7 +57,7 @@ export default function conditionalExec(
       if (!cmd) {
         const errReason = cmd === "" ? "empty string" : "undefined or null";
         throw new Error(
-          `rollup-plugin-conditional-exec requires a command to be used, received: ${errReason}`
+          `rollup-plugin-conditional-exec requires a command to be used, received: ${errReason}`,
         );
       }
     },

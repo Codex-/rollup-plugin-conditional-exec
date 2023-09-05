@@ -73,7 +73,7 @@ describe("rollup-plugin-conditional-exec", () => {
       });
 
       await expect(bundlePromise).rejects.toThrow(
-        "rollup-plugin-conditional-exec requires a command to be used, received: empty string"
+        "rollup-plugin-conditional-exec requires a command to be used, received: empty string",
       );
     });
   });
@@ -303,7 +303,7 @@ describe("rollup-plugin-conditional-exec", () => {
 
       // await bundle.write({ dir: outputDir, format: "cjs" })
       await expect(
-        bundle.write({ dir: outputDir, format: "cjs" })
+        bundle.write({ dir: outputDir, format: "cjs" }),
       ).rejects.toThrow("Test Error");
       expect(consoleErrorSpy).toHaveBeenCalled();
       expect(consoleDebugSpy).toHaveBeenCalled();

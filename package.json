@@ -35,12 +35,12 @@
     }
   },
   "scripts": {
-    "build": "npm run build:types && npm run build:bundles",
+    "build": "pnpm run build:types && pnpm run build:bundles",
     "build:bundles": "node ./esbuild.config.mjs",
     "build:types": "tsc -p tsconfig.build.json",
     "check:types": "tsc -p tsconfig.json",
     "format:check": "prettier --check \"{**/*,*}.{js,ts}\"",
-    "format": "npm run format:check -- --write",
+    "format": "pnpm run format:check --write",
     "lint": "eslint --ext \".js,.ts\" .",
     "release": "release-it",
     "test": "vitest",
@@ -50,7 +50,7 @@
     "dist/**/*"
   ],
   "peerDependencies": {
-    "rollup": "^3.0.0"
+    "rollup": "^4.x"
   },
   "devDependencies": {
     "@types/node": "^20.10.6",
@@ -66,6 +66,7 @@
     "eslint-plugin-prettier": "^5.1.2",
     "prettier": "^3.1.1",
     "release-it": "^17.0.1",
+    "rollup": "^4.9.6",
     "typescript": "^5.3.3",
     "vitest": "^0.34.6"
   }

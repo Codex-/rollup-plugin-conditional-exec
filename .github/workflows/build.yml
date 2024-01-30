@@ -1,6 +1,9 @@
 name: build
 on:
+  pull_request:
   push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,26 +16,29 @@ jobs:
         node-version: [18.x, 20.x]
     steps:
       - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - run: pnpm i
       - name: types
         run: npm run check:types
       - name: build
-        run: npm run build
+        run: pnpm run build
       - name: test
         id: test
         if: ${{ always() }}
-        run: npm run test
+        run: pnpm run test
       - name: lint
         if: ${{ always() }}
-        run: npm run lint
+        run: pnpm run lint
       - name: style
         if: ${{ always() }}
-        run: npm run format:check
+        run: pnpm run format:check
 
   codecov: # Send only a single coverage report per run
     needs: build
@@ -42,13 +48,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Use Node.js lts
-        uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
         with:
           node-version: 20.x
-          cache: npm
-      - run: npm ci
+          cache: pnpm
+      - run: pnpm i
       - name: test
-        run: npm run test:coverage
+        run: pnpm run test:coverage
       - name: codecov
         uses: codecov/codecov-action@v3

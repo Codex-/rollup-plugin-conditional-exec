@@ -12,6 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "skipLibCheck": true,
     "strict": true
   },
   "include": ["src"]

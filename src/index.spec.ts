@@ -7,7 +7,7 @@ import {
   describe,
   expect,
   it,
-  SpyInstance,
+  type MockInstance,
   vi,
 } from "vitest";
 import { OutputOptions, rollup } from "rollup";
@@ -19,7 +19,7 @@ const cwd = join(__dirname, "__fixtures__/");
 const outputDir = join(__dirname, "../output");
 
 describe("rollup-plugin-conditional-exec", () => {
-  let mockExec: SpyInstance;
+  let mockExec: MockInstance;
 
   function sleep(ms: number): Promise<void> {
     return new Promise<void>((resolve) => setTimeout(resolve, ms));

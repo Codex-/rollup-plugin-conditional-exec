@@ -29,7 +29,7 @@ jobs:
           version: 8
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.19.2
+          node-version: 20.19.3
           cache: pnpm
       - run: pnpm i
       - name: types

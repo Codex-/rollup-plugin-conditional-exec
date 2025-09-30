@@ -53,20 +53,20 @@
     "rollup": "^4.x"
   },
   "devDependencies": {
-    "@types/node": "^22.18.0",
+    "@types/node": "^22.18.7",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "@vitest/coverage-v8": "^3.2.4",
-    "chalk": "^5.6.0",
-    "esbuild": "^0.25.9",
+    "chalk": "^5.6.2",
+    "esbuild": "^0.25.10",
     "eslint": "^8.57.1",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.6.2",
-    "release-it": "^19.0.4",
-    "rollup": "^4.50.0",
+    "release-it": "^19.0.5",
+    "rollup": "^4.52.3",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   }

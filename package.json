@@ -53,10 +53,10 @@
     "rollup": "^4.x"
   },
   "devDependencies": {
-    "@types/node": "^24.13.2",
+    "@types/node": "^24.13.3",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
-    "@vitest/coverage-v8": "^3.2.6",
+    "@vitest/coverage-v8": "^3.2.7",
     "chalk": "^5.6.2",
     "esbuild": "^0.28.1",
     "eslint": "^8.57.1",
@@ -64,10 +64,10 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.9.4",
+    "prettier": "^3.9.6",
     "release-it": "^20.2.1",
-    "rollup": "^4.62.2",
+    "rollup": "^4.62.3",
     "typescript": "^5.9.3",
-    "vitest": "^3.2.6"
+    "vitest": "^3.2.7"
   }
 }
